@@ -1,0 +1,172 @@
+@font-face {
+    font-family: 'Sleigher';
+    src: url('../assets/fonts/Sleigher.otf');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+body {
+    min-width: 480px;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Sleigher', sans-serif;
+    color: #fff;
+    text-align: center;
+    background: url("../assets/home.png") center/cover, rgba(0, 0, 0, 0.5);
+    /* background: center/cover, rgba(0, 0, 0, 0.5); */
+    background-blend-mode: multiply;
+    /* transition: background-image 1s ease-in-out; */
+}
+
+.app-main {
+    display: flex;
+    gap: 20px;
+    height: 100vh;
+    justify-content: space-between;
+    width: 100vw;
+}
+
+.ancients-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-width: 40%;
+    padding: 20px;
+}
+
+.difficulty-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100vh;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.active {
+    visibility: visible;
+}
+
+.deck-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    min-width: 30%;
+}
+
+.ancient-card {
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 260px;
+    width: 200px;
+}
+
+.ctulhu {
+    background-image: url('../assets/Ancients/Cthulthu.png');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.difficulty-container .difficulty {
+    border: 2px solid white;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.shuffle-button {
+    /* background-color: red; */
+    border: 2px solid white;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    position: relative;
+    top: 39%;
+    visibility: hidden;
+}
+
+.deck-ingame {
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+}
+
+.current-state {
+    padding-bottom: 20%;
+}
+
+.deck-container .current-state {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 30%;
+}
+
+.deck-container .current-state .stage-container .dots-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.deck-container .current-state .stage-container .dots-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+.deck-container .current-state .stage-container .dot.green {
+    background-color: green;
+}
+
+.deck-container .current-state .stage-container .dot.brown {
+    background-color: brown;
+}
+
+.deck-container .current-state .stage-container .dot.blue {
+    background-color: blue;
+}
+
+.deck-container .current-state .stage-container .dot {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    width: 30px;
+}
+
+.deck {
+    background-image: url('../assets/mythicCardBackground.png');
+}
+
+.deck-container .deck, .deck-container .last-card {
+    background-size: cover;
+    height: 190px;
+    width: 130px;
+}
+
+.deck-container .deck {
+    cursor: pointer;
+}
+
+.deck-container .deck, .deck-container .last-card {
+    background-size: cover;
+    height: 190px;
+    width: 130px;
+}
