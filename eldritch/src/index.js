@@ -45,6 +45,7 @@ const stageThreeBlue = document.getElementById('stg3-blue')
 const ctulhu = document.querySelector('.ctulhu')
 const azatoth = document.querySelector('.azatoth')
 const iogsototh = document.querySelector('.iogsototh')
+const shubniggurath = document.querySelector('.shubniggurath')
 const normalButton = document.querySelector('.normal')
 
 let fullDeck
@@ -123,6 +124,12 @@ const setAncient = (ancient) => {
         stageThree = ((greens.splice(0, 3)).concat(browns.splice(0, 4)))
         setTracker()
     }
+    if (ancient === 'shubniggurath') {
+        stageOne = ((greens.splice(0, 1)).concat(browns.splice(0, 2), blues.slice(0, 1)))
+        stageTwo = ((greens.splice(0, 3)).concat(browns.splice(0, 2), blues.splice(0, 1)))
+        stageThree = ((greens.splice(0, 2)).concat(browns.splice(0, 4)))
+        setTracker()
+    }
 }
 
 ctulhu.addEventListener('click', () => {
@@ -138,6 +145,11 @@ azatoth.addEventListener('click', () => {
 iogsototh.addEventListener('click', () => {
     clearDeck()
     ancient = 'iogsototh'
+})
+
+shubniggurath.addEventListener('click', () => {
+    clearDeck()
+    ancient = 'shubniggurath'
 })
 
 normalButton.addEventListener('click', () => {
