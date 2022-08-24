@@ -18,7 +18,7 @@ body {
     font-family: 'Sleigher', sans-serif;
     color: #fff;
     text-align: center;
-    background: url("../assets/home.png") center/cover, rgba(0, 0, 0, 0.5);
+    background: url("../assets/home.png") center/cover;
     /* background: center/cover, rgba(0, 0, 0, 0.5); */
     background-blend-mode: multiply;
     /* transition: background-image 1s ease-in-out; */
@@ -59,7 +59,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: center;
     min-width: 30%;
 }
 
@@ -94,7 +93,7 @@ body {
     cursor: pointer;
     padding: 5px;
     position: relative;
-    top: 39%;
+    top: 47%;
     visibility: hidden;
 }
 
@@ -102,6 +101,8 @@ body {
     display: flex;
     flex-direction: column;
     visibility: hidden;
+    /* align-self: flex-end;
+    padding-right: 5%; */
 }
 
 .current-state {
@@ -153,6 +154,10 @@ body {
 
 .deck {
     background-image: url('../assets/mythicCardBackground.png');
+}
+
+.last-card {
+    margin-top: 20%;
 }
 
 .deck-container .deck, .deck-container .last-card {
