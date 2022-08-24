@@ -80,6 +80,10 @@ body {
     background-image: url('../assets/Ancients/Azathoth.png');
 }
 
+.iogsototh {
+    background-image: url('../assets/Ancients/IogSothoth.png');
+}
+
 .difficulty-container .difficulty {
     border: 2px solid white;
     box-sizing: border-box;

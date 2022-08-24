@@ -21,6 +21,7 @@ const appear = (element) => {
 
 ancients.addEventListener('click', () => {
     appear(difficulty)
+    deckIngame.style.visibility = 'hidden'
 })
 
 difficultyButton.addEventListener('click', () => {
@@ -43,6 +44,7 @@ const stageThreeBlue = document.getElementById('stg3-blue')
 
 const ctulhu = document.querySelector('.ctulhu')
 const azatoth = document.querySelector('.azatoth')
+const iogsototh = document.querySelector('.iogsototh')
 const normalButton = document.querySelector('.normal')
 
 let fullDeck
@@ -115,18 +117,27 @@ const setAncient = (ancient) => {
         stageThree = ((greens.splice(0, 2)).concat(browns.splice(0, 4)))
         setTracker()
     }
+    if (ancient === 'iogsototh') {
+        stageOne = ((browns.splice(0, 2)).concat(blues.slice(0, 1)))
+        stageTwo = ((greens.splice(0, 2)).concat(browns.splice(0, 3), blues.splice(0, 1)))
+        stageThree = ((greens.splice(0, 3)).concat(browns.splice(0, 4)))
+        setTracker()
+    }
 }
 
 ctulhu.addEventListener('click', () => {
     clearDeck()
     ancient = 'ctulhu'
-    console.log(ancient)
 })
 
 azatoth.addEventListener('click', () => {
     clearDeck()
     ancient = 'azatoth'
-    console.log(ancient)
+})
+
+iogsototh.addEventListener('click', () => {
+    clearDeck()
+    ancient = 'iogsototh'
 })
 
 normalButton.addEventListener('click', () => {
@@ -139,7 +150,6 @@ shuffle.addEventListener('click', () => {
     deckIngame.style.visibility = 'visible'
     shuffle.style.visibility = 'hidden'
     deck = (shuffleArray(stageThree).concat(shuffleArray(stageTwo), shuffleArray(stageOne)))
-    console.log(deck)
 })
 
 // ingame
