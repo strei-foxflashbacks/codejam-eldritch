@@ -67,13 +67,17 @@ body {
     cursor: pointer;
     height: 260px;
     width: 200px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .ctulhu {
     background-image: url('../assets/Ancients/Cthulthu.png');
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
+}
+
+.azatoth {
+    background-image: url('../assets/Ancients/Azathoth.png');
 }
 
 .difficulty-container .difficulty {
