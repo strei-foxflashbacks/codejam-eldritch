@@ -9,7 +9,7 @@ import blueCardsData from "./js/data/mythicCards/blue/index.js"
 
 // apperance
 
-const ancients = document.querySelector('.ancients-container')
+const ancients = document.querySelectorAll('.ancient-card')
 const difficulty = document.querySelector('.difficulty-container')
 const difficultyButton = document.querySelector('.difficulty')
 const shuffle = document.querySelector('.shuffle-button')
@@ -20,10 +20,14 @@ const appear = (element) => {
     element.classList.add('active')
 }
 
-ancients.addEventListener('click', () => {
-    appear(difficulty)
-    deckIngame.style.visibility = 'hidden'
+ancients.forEach(element => {
+    element.addEventListener('click', () => {
+        appear(difficulty)
+        deckIngame.style.visibility = 'hidden'
+        ingameDeck.style.visibility = 'hidden'
+    })
 })
+
 
 difficultyButton.addEventListener('click', () => {
     shuffle.style.display = 'inline'
@@ -133,8 +137,14 @@ const setAncient = (ancient) => {
     }
 }
 
+const uncheckAll = () => {
+    const checks = document.querySelectorAll('.difficulty-check')
+    checks.forEach(element => element.checked = false)
+}
+
 ctulhu.addEventListener('click', () => {
     clearDeck()
+    uncheckAll()
     lastCard.style.visibility = 'hidden'
     ancient = 'ctulhu'
     body.style.backgroundImage = 'url("./images/ctulhu.png")'
@@ -142,6 +152,7 @@ ctulhu.addEventListener('click', () => {
 
 azatoth.addEventListener('click', () => {
     clearDeck()
+    uncheckAll()
     lastCard.style.visibility = 'hidden'
     ancient = 'azatoth'
     body.style.backgroundImage = 'url("./images/azatoth.png")'
@@ -149,6 +160,7 @@ azatoth.addEventListener('click', () => {
 
 iogsototh.addEventListener('click', () => {
     clearDeck()
+    uncheckAll()
     lastCard.style.visibility = 'hidden'
     ancient = 'iogsototh'
     body.style.backgroundImage = 'url("./images/iogsothoth.png")'
@@ -156,6 +168,7 @@ iogsototh.addEventListener('click', () => {
 
 shubniggurath.addEventListener('click', () => {
     clearDeck()
+    uncheckAll()
     lastCard.style.visibility = 'hidden'
     ancient = 'shubniggurath'
     body.style.backgroundImage = 'url("./images/shubniggurath.png")'
@@ -171,6 +184,9 @@ shuffle.addEventListener('click', () => {
     deckIngame.style.visibility = 'visible'
     shuffle.style.display = 'none'
     deck = (shuffleArray(stageThree).concat(shuffleArray(stageTwo), shuffleArray(stageOne)))
+    if (deck.length > 0) {
+        ingameDeck.style.visibility = 'visible'
+    }
 })
 
 // ingame
@@ -182,6 +198,9 @@ ingameDeck.addEventListener('click', () => {
     let currentCard = deck.pop()
     lastCard.style.visibility = 'visible'
     lastCard.style.backgroundImage = `url('${currentCard.cardFace}')`
+    if (deck.length === 0) {
+        ingameDeck.style.visibility = 'hidden'
+    }
     if (stageOneGreen.textContent > 0 || stageOneBrown.textContent > 0 || stageOneBlue.textContent > 0) {
         if (currentCard.color === 'green') {
             stageOneGreen.textContent = stageOneGreen.textContent - 1

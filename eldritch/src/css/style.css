@@ -21,7 +21,7 @@ body {
     background: url("../images/ctulhu.png") center/cover;
     /* background: center/cover, rgba(0, 0, 0, 0.5); */
     background-blend-mode: multiply;
-    /* transition: background-image 1s ease-in-out; */
+    transition: background-image 1s ease-in-out;
 }
 
 .app-main {
@@ -115,6 +115,10 @@ body {
     color: red;
 }
 
+.difficulty:active {
+    transform: scale(1.1)
+}
+
 .shuffle-button {
     /* background-color: red; */
     border: 2px solid white;
@@ -125,11 +129,13 @@ body {
     position: relative;
     top: 47%;
     display: none;
+    transition: 0.5s;
 }
 
 .shuffle-button:active {
     border: 2px solid red;
     color: red;
+    transform: scale(1.1)
 }
 
 .deck-ingame {
@@ -190,6 +196,11 @@ body {
 
 .deck {
     background-image: url('../assets/mythicCardBackground.png');
+    transition: 0.5s ease-out;
+}
+
+.deck:active {
+    transform: scale(1.1)
 }
 
 .last-card {
