@@ -52,6 +52,7 @@ const azatoth = document.querySelector('.azatoth')
 const iogsototh = document.querySelector('.iogsototh')
 const shubniggurath = document.querySelector('.shubniggurath')
 const normalButton = document.querySelector('.normal')
+const hardButton = document.querySelector('.hard')
 
 let fullDeck
 let ancient = ''
@@ -91,10 +92,12 @@ const shuffleColors = () => {
     }))
 }
 
-
 const setDifficulty = (level) => {
     if (level === 'normal') {
         fullDeck = blueCardsData.concat(brownCardsData, greenCardsData)
+    }
+    if (level === 'hard') {
+        fullDeck = (blueCardsData.concat(brownCardsData, greenCardsData)).filter((element) => element.difficulty !== 'easy')
     }
 }
 
@@ -175,7 +178,15 @@ shubniggurath.addEventListener('click', () => {
 })
 
 normalButton.addEventListener('click', () => {
+    shuffle.style.display = 'inline'
     setDifficulty('normal')
+    shuffleColors()
+    setAncient(ancient)
+})
+
+hardButton.addEventListener('click', () => {
+    shuffle.style.display = 'inline'
+    setDifficulty('hard')
     shuffleColors()
     setAncient(ancient)
 })

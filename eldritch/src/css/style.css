@@ -98,7 +98,7 @@ body {
 
 .difficulty-container .difficulty label {
     appearance: none;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     box-sizing: border-box;
     color: white;
     cursor: pointer;
@@ -106,12 +106,16 @@ body {
     text-align: center;
 }
 
+.difficulty {
+    border: 2px solid white;
+}
+
 .difficulty input[type=radio] {
     display: none;
 }
 
 .difficulty input[type=radio]:checked + label {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     color: red;
 }
 
@@ -120,7 +124,6 @@ body {
 }
 
 .shuffle-button {
-    /* background-color: red; */
     border: 2px solid white;
     box-sizing: border-box;
     color: white;
@@ -133,7 +136,7 @@ body {
 }
 
 .shuffle-button:active {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     color: red;
     transform: scale(1.1)
 }
