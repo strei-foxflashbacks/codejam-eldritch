@@ -18,7 +18,7 @@ body {
     font-family: 'Sleigher', sans-serif;
     color: #fff;
     text-align: center;
-    background: url("../assets/home.png") center/cover;
+    background: url("../images/ctulhu.png") center/cover;
     /* background: center/cover, rgba(0, 0, 0, 0.5); */
     background-blend-mode: multiply;
     /* transition: background-image 1s ease-in-out; */
@@ -63,6 +63,7 @@ body {
 }
 
 .ancient-card {
+    appearance: none;
     box-sizing: border-box;
     cursor: pointer;
     height: 260px;
@@ -70,6 +71,13 @@ body {
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: contain;
+    margin-top: 10%;
+}
+
+.ancient-card:checked {
+    border: 3px solid red;
+    box-sizing: border-box;
+    transform: scale(1.2);
 }
 
 .ctulhu {
@@ -88,13 +96,23 @@ body {
     background-image: url('../assets/Ancients/ShubNiggurath.png');
 }
 
-.difficulty-container .difficulty {
+.difficulty-container .difficulty label {
+    appearance: none;
     border: 2px solid white;
     box-sizing: border-box;
     color: white;
     cursor: pointer;
     padding: 5px 10px;
     text-align: center;
+}
+
+.difficulty input[type=radio] {
+    display: none;
+}
+
+.difficulty input[type=radio]:checked + label {
+    border: 2px solid red;
+    color: red;
 }
 
 .shuffle-button {
@@ -106,7 +124,12 @@ body {
     padding: 5px;
     position: relative;
     top: 47%;
-    visibility: hidden;
+    display: none;
+}
+
+.shuffle-button:active {
+    border: 2px solid red;
+    color: red;
 }
 
 .deck-ingame {
@@ -118,6 +141,7 @@ body {
 }
 
 .current-state {
+    padding-top: 50%;
     padding-bottom: 20%;
 }
 
@@ -170,6 +194,11 @@ body {
 
 .last-card {
     margin-top: 20%;
+    transition: 0.5s;
+}
+
+.last-card:hover {
+    transform: scale(1.7);
 }
 
 .deck-container .deck, .deck-container .last-card {

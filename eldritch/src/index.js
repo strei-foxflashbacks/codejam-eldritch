@@ -14,6 +14,7 @@ const difficulty = document.querySelector('.difficulty-container')
 const difficultyButton = document.querySelector('.difficulty')
 const shuffle = document.querySelector('.shuffle-button')
 const deckIngame = document.querySelector('.deck-ingame')
+const body = document.querySelector('body')
 
 const appear = (element) => {
     element.classList.add('active')
@@ -25,7 +26,7 @@ ancients.addEventListener('click', () => {
 })
 
 difficultyButton.addEventListener('click', () => {
-    shuffle.style.visibility = 'visible'
+    shuffle.style.display = 'inline'
 })
 
 //tracker
@@ -134,22 +135,30 @@ const setAncient = (ancient) => {
 
 ctulhu.addEventListener('click', () => {
     clearDeck()
+    lastCard.style.visibility = 'hidden'
     ancient = 'ctulhu'
+    body.style.backgroundImage = 'url("./images/ctulhu.png")'
 })
 
 azatoth.addEventListener('click', () => {
     clearDeck()
+    lastCard.style.visibility = 'hidden'
     ancient = 'azatoth'
+    body.style.backgroundImage = 'url("./images/azatoth.png")'
 })
 
 iogsototh.addEventListener('click', () => {
     clearDeck()
+    lastCard.style.visibility = 'hidden'
     ancient = 'iogsototh'
+    body.style.backgroundImage = 'url("./images/iogsothoth.png")'
 })
 
 shubniggurath.addEventListener('click', () => {
     clearDeck()
+    lastCard.style.visibility = 'hidden'
     ancient = 'shubniggurath'
+    body.style.backgroundImage = 'url("./images/shubniggurath.png")'
 })
 
 normalButton.addEventListener('click', () => {
@@ -160,7 +169,7 @@ normalButton.addEventListener('click', () => {
 
 shuffle.addEventListener('click', () => {
     deckIngame.style.visibility = 'visible'
-    shuffle.style.visibility = 'hidden'
+    shuffle.style.display = 'none'
     deck = (shuffleArray(stageThree).concat(shuffleArray(stageTwo), shuffleArray(stageOne)))
 })
 
@@ -171,6 +180,7 @@ const lastCard = document.querySelector('.last-card')
 
 ingameDeck.addEventListener('click', () => {
     let currentCard = deck.pop()
+    lastCard.style.visibility = 'visible'
     lastCard.style.backgroundImage = `url('${currentCard.cardFace}')`
     if (stageOneGreen.textContent > 0 || stageOneBrown.textContent > 0 || stageOneBlue.textContent > 0) {
         if (currentCard.color === 'green') {

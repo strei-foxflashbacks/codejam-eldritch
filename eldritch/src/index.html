@@ -12,13 +12,16 @@
 <body>
     <div class="app-main">
         <div class="ancients-container">
-            <div class="ancient-card ctulhu"></div>
-            <div class="ancient-card azatoth"></div>
-            <div class="ancient-card iogsototh"></div>
-            <div class="ancient-card shubniggurath"></div>
+            <input type="radio" class="ancient-card ctulhu" name="ancient" value="ctulhu"></input>
+            <input type="radio" class="ancient-card azatoth" name="ancient" value="azatoth"></input>
+            <input type="radio" class="ancient-card iogsototh" name="ancient" value="iogsototh"></input>
+            <input type="radio" class="ancient-card shubniggurath" name="ancient" value="shubniggurath"></input>
         </div>
         <div class="difficulty-container">
-            <div class="difficulty normal">Normal</div>
+            <div class="difficulty normal">
+                <input id="difficulty-normal" type="radio" name="difficulty">
+                <label for="difficulty-normal">Normal</label>
+            </div>
         </div>
         <div class="deck-container">
             <span class="shuffle-button">Shuffle deck</span>
