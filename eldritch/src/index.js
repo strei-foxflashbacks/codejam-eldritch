@@ -11,13 +11,23 @@ import blueCardsData from "./js/data/mythicCards/blue/index.js"
 
 const ancients = document.querySelectorAll('.ancient-card')
 const difficulty = document.querySelector('.difficulty-container')
-const difficultyButton = document.querySelector('.difficulty')
+const difficultyButton = document.querySelectorAll('.difficulty')
 const shuffle = document.querySelector('.shuffle-button')
 const deckIngame = document.querySelector('.deck-ingame')
 const body = document.querySelector('body')
+const audio = new Audio()
 
 const appear = (element) => {
     element.classList.add('active')
+}
+
+const reset = () => {
+    lastCard.style.visibility = 'hidden'
+    deckIngame.style.visibility = 'hidden'
+    ingameDeck.style.visibility = 'hidden'
+    stageOneText.classList.remove('stage-text-active')
+    stageTwoText.classList.remove('stage-text-active')
+    stageThreeText.classList.remove('stage-text-active')
 }
 
 ancients.forEach(element => {
@@ -25,17 +35,15 @@ ancients.forEach(element => {
         clearDeck()
         uncheckAll()
         appear(difficulty)
-        lastCard.style.visibility = 'hidden'
-        deckIngame.style.visibility = 'hidden'
-        ingameDeck.style.visibility = 'hidden'
-        stageOneText.classList.remove('stage-text-active')
-        stageTwoText.classList.remove('stage-text-active')
-        stageThreeText.classList.remove('stage-text-active')
+        reset()
     })
 })
 
-difficultyButton.addEventListener('click', () => {
-    shuffle.style.display = 'inline'
+difficultyButton.forEach(element => {
+    element.addEventListener('click', () => {
+        shuffle.style.display = 'inline'
+        reset()
+    })
 })
 
 //tracker
@@ -74,6 +82,7 @@ let blues
 let stageOne
 let stageTwo
 let stageThree
+let isPlaying = false
 
 const clearDeck = () => {
     deck.length = 0
@@ -212,27 +221,61 @@ const uncheckAll = () => {
     checks.forEach(element => element.checked = false)
 }
 
+const playIntro = (ancient) => {
+    if (!isPlaying) {
+        audio.src = `../src/assets/sounds/${ancient}.ogg`
+        audio.currentTime = 0
+        audio.play()
+        isPlaying = true
+    }
+    else {
+        audio.pause()
+        isPlaying = false
+        audio.src = `../src/assets/sounds/${ancient}.ogg`
+        audio.currentTime = 0
+        audio.play()
+        isPlaying = true
+    }
+}
+
+const playSwitch = () => {
+    audio.src = '../src/assets/sounds/switch.ogg'
+    audio.currentTime = 0
+    audio.play()
+}
+
+const playCard = () => {
+    audio.src = '../src/assets/sounds/card.ogg'
+    audio.currentTime = 0
+    audio.play()
+}
+
 ctulhu.addEventListener('click', () => {
     ancient = 'ctulhu'
+    playIntro(ancient)
     body.style.backgroundImage = 'url("./images/ctulhu.png")'
 })
 
 azatoth.addEventListener('click', () => {
     ancient = 'azatoth'
+    playIntro(ancient)
     body.style.backgroundImage = 'url("./images/azatoth.png")'
 })
 
 iogsototh.addEventListener('click', () => {
     ancient = 'iogsototh'
+    playIntro(ancient)
     body.style.backgroundImage = 'url("./images/iogsothoth.png")'
 })
 
 shubniggurath.addEventListener('click', () => {
     ancient = 'shubniggurath'
+    playIntro(ancient)
     body.style.backgroundImage = 'url("./images/shubniggurath.png")'
 })
 
 normalButton.addEventListener('click', () => {
+    playSwitch()
     shuffle.style.display = 'inline'
     setDifficulty('normal')
     shuffleColors()
@@ -240,6 +283,7 @@ normalButton.addEventListener('click', () => {
 })
 
 hardButton.addEventListener('click', () => {
+    playSwitch()
     shuffle.style.display = 'inline'
     setDifficulty('hard')
     shuffleColors()
@@ -247,6 +291,7 @@ hardButton.addEventListener('click', () => {
 })
 
 easyButton.addEventListener('click', () => {
+    playSwitch()
     shuffle.style.display = 'inline'
     setDifficulty('easy')
     shuffleColors()
@@ -254,6 +299,7 @@ easyButton.addEventListener('click', () => {
 })
 
 sandboxButton.addEventListener('click', () => {
+    playSwitch()
     shuffle.style.display = 'inline'
     setDifficulty('sandbox')
     shuffleColors()
@@ -261,6 +307,7 @@ sandboxButton.addEventListener('click', () => {
 })
 
 nightmareButton.addEventListener('click', () => {
+    playSwitch()
     shuffle.style.display = 'inline'
     setDifficulty('nightmare')
     shuffleColors()
@@ -268,6 +315,7 @@ nightmareButton.addEventListener('click', () => {
 })
 
 shuffle.addEventListener('click', () => {
+    playSwitch()
     deckIngame.style.visibility = 'visible'
     shuffle.style.display = 'none'
     deck = (shuffleArray(stageThree).concat(shuffleArray(stageTwo), shuffleArray(stageOne)))
@@ -282,6 +330,7 @@ const ingameDeck = document.querySelector('.deck')
 const lastCard = document.querySelector('.last-card')
 
 ingameDeck.addEventListener('click', () => {
+    playCard()
     let currentCard = deck.pop()
     lastCard.style.visibility = 'visible'
     lastCard.style.backgroundImage = `url('${currentCard.cardFace}')`
