@@ -154,6 +154,10 @@ body {
     padding-bottom: 20%;
 }
 
+.stage-text-active {
+    color: red;
+}
+
 .deck-container .current-state {
     display: flex;
     flex-direction: column;

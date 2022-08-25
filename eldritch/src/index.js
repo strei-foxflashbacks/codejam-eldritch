@@ -22,9 +22,15 @@ const appear = (element) => {
 
 ancients.forEach(element => {
     element.addEventListener('click', () => {
+        clearDeck()
+        uncheckAll()
         appear(difficulty)
+        lastCard.style.visibility = 'hidden'
         deckIngame.style.visibility = 'hidden'
         ingameDeck.style.visibility = 'hidden'
+        stageOneText.classList.remove('stage-text-active')
+        stageTwoText.classList.remove('stage-text-active')
+        stageThreeText.classList.remove('stage-text-active')
     })
 })
 
@@ -43,6 +49,9 @@ const stageTwoBlue = document.getElementById('stg2-blue')
 const stageThreeGreen = document.getElementById('stg3-green')
 const stageThreeBrown = document.getElementById('stg3-brown')
 const stageThreeBlue = document.getElementById('stg3-blue')
+const stageOneText = document.querySelector('.stg1-text')
+const stageTwoText = document.querySelector('.stg2-text')
+const stageThreeText = document.querySelector('.stg3-text')
 
 // deckbuild
 
@@ -204,33 +213,21 @@ const uncheckAll = () => {
 }
 
 ctulhu.addEventListener('click', () => {
-    clearDeck()
-    uncheckAll()
-    lastCard.style.visibility = 'hidden'
     ancient = 'ctulhu'
     body.style.backgroundImage = 'url("./images/ctulhu.png")'
 })
 
 azatoth.addEventListener('click', () => {
-    clearDeck()
-    uncheckAll()
-    lastCard.style.visibility = 'hidden'
     ancient = 'azatoth'
     body.style.backgroundImage = 'url("./images/azatoth.png")'
 })
 
 iogsototh.addEventListener('click', () => {
-    clearDeck()
-    uncheckAll()
-    lastCard.style.visibility = 'hidden'
     ancient = 'iogsototh'
     body.style.backgroundImage = 'url("./images/iogsothoth.png")'
 })
 
 shubniggurath.addEventListener('click', () => {
-    clearDeck()
-    uncheckAll()
-    lastCard.style.visibility = 'hidden'
     ancient = 'shubniggurath'
     body.style.backgroundImage = 'url("./images/shubniggurath.png")'
 })
@@ -292,6 +289,7 @@ ingameDeck.addEventListener('click', () => {
         ingameDeck.style.visibility = 'hidden'
     }
     if (stageOneGreen.textContent > 0 || stageOneBrown.textContent > 0 || stageOneBlue.textContent > 0) {
+        stageOneText.classList.add('stage-text-active')
         if (currentCard.color === 'green') {
             stageOneGreen.textContent = stageOneGreen.textContent - 1
         }
@@ -303,6 +301,7 @@ ingameDeck.addEventListener('click', () => {
         }
     }
     else if (stageTwoGreen.textContent > 0 || stageTwoBrown.textContent > 0 || stageTwoBlue.textContent > 0) {
+        stageTwoText.classList.add('stage-text-active')
         if (currentCard.color === 'green') {
             stageTwoGreen.textContent = stageTwoGreen.textContent - 1
         }
@@ -314,6 +313,7 @@ ingameDeck.addEventListener('click', () => {
         }
     }
     else if (stageThreeGreen.textContent > 0 || stageThreeBrown.textContent > 0 || stageThreeBlue.textContent > 0) {
+        stageThreeText.classList.add('stage-text-active')
         if (currentCard.color === 'green') {
             stageThreeGreen.textContent = stageThreeGreen.textContent - 1
         }
