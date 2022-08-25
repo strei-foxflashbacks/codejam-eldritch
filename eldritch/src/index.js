@@ -28,7 +28,6 @@ ancients.forEach(element => {
     })
 })
 
-
 difficultyButton.addEventListener('click', () => {
     shuffle.style.display = 'inline'
 })
@@ -53,6 +52,7 @@ const iogsototh = document.querySelector('.iogsototh')
 const shubniggurath = document.querySelector('.shubniggurath')
 const normalButton = document.querySelector('.normal')
 const hardButton = document.querySelector('.hard')
+const easyButton = document.querySelector('.easy')
 
 let fullDeck
 let ancient = ''
@@ -98,6 +98,9 @@ const setDifficulty = (level) => {
     }
     if (level === 'hard') {
         fullDeck = (blueCardsData.concat(brownCardsData, greenCardsData)).filter((element) => element.difficulty !== 'easy')
+    }
+    if (level === 'easy') {
+        fullDeck = (blueCardsData.concat(brownCardsData, greenCardsData)).filter((element) => element.difficulty !== 'hard')
     }
 }
 
@@ -190,6 +193,14 @@ hardButton.addEventListener('click', () => {
     shuffleColors()
     setAncient(ancient)
 })
+
+easyButton.addEventListener('click', () => {
+    shuffle.style.display = 'inline'
+    setDifficulty('easy')
+    shuffleColors()
+    setAncient(ancient)
+})
+
 
 shuffle.addEventListener('click', () => {
     deckIngame.style.visibility = 'visible'
