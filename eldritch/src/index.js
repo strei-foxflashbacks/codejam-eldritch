@@ -53,6 +53,7 @@ const shubniggurath = document.querySelector('.shubniggurath')
 const normalButton = document.querySelector('.normal')
 const hardButton = document.querySelector('.hard')
 const easyButton = document.querySelector('.easy')
+const sandboxButton = document.querySelector('.sandbox')
 
 let fullDeck
 let ancient = ''
@@ -102,7 +103,34 @@ const setDifficulty = (level) => {
     if (level === 'easy') {
         fullDeck = (blueCardsData.concat(brownCardsData, greenCardsData)).filter((element) => element.difficulty !== 'hard')
     }
+    if (level === 'sandbox') {
+        let preGreen
+        let preBrown
+        let preBlue
+        if (ancient === 'ctulhu') {
+            preGreen = (greenCardsData.filter((element) => element.difficulty === 'easy'))
+            preBrown = (brownCardsData.filter((element) => element.difficulty === 'easy')).concat((shuffleArray(brownCardsData.filter((element) => element.difficulty === 'normal'))).splice(0, 4))
+            preBlue = (blueCardsData.filter((element) => element.difficulty === 'easy'))
+        }
+        if (ancient === 'azatoth') {
+            preGreen = (greenCardsData.filter((element) => element.difficulty === 'easy'))
+            preBrown = (brownCardsData.filter((element) => element.difficulty === 'easy')).concat((shuffleArray(brownCardsData.filter((element) => element.difficulty === 'normal'))).splice(0, 4))
+            preBlue = (blueCardsData.filter((element) => element.difficulty === 'easy'))
+        }
+        if (ancient === 'iogsototh') {
+            preGreen = (greenCardsData.filter((element) => element.difficulty === 'easy'))
+            preBrown = (brownCardsData.filter((element) => element.difficulty === 'easy')).concat((shuffleArray(brownCardsData.filter((element) => element.difficulty === 'normal'))).splice(0, 4))
+            preBlue = (blueCardsData.filter((element) => element.difficulty === 'easy'))
+        }
+        if (ancient === 'shubniggurath') {
+            preGreen = (greenCardsData.filter((element) => element.difficulty === 'easy')).concat((shuffleArray(greenCardsData.filter((element) => element.difficulty === 'normal'))).splice(0, 1))
+            preBrown = (brownCardsData.filter((element) => element.difficulty === 'easy')).concat((shuffleArray(brownCardsData.filter((element) => element.difficulty === 'normal'))).splice(0, 3))
+            preBlue = (blueCardsData.filter((element) => element.difficulty === 'easy'))
+        }
+        fullDeck = (preGreen.concat(preBrown, preBlue))
+    }
 }
+
 
 const setTracker = () => {
     stageOneGreen.textContent = (stageOne.filter((element) => element.color === 'green')).length
@@ -201,6 +229,12 @@ easyButton.addEventListener('click', () => {
     setAncient(ancient)
 })
 
+sandboxButton.addEventListener('click', () => {
+    shuffle.style.display = 'inline'
+    setDifficulty('sandbox')
+    shuffleColors()
+    setAncient(ancient)
+})
 
 shuffle.addEventListener('click', () => {
     deckIngame.style.visibility = 'visible'
