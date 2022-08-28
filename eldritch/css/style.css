@@ -18,7 +18,7 @@ body {
     font-family: 'Sleigher', sans-serif;
     color: #fff;
     text-align: center;
-    background: url("../images/ctulhu.png") center/cover;
+    background: url("../images/ctulhu.webp") center/cover;
     /* background: center/cover, rgba(0, 0, 0, 0.5); */
     background-blend-mode: multiply;
     transition: background-image 1s ease-in-out;
@@ -81,19 +81,19 @@ body {
 }
 
 .ctulhu {
-    background-image: url('../assets/Ancients/Cthulthu.png');
+    background-image: url('../assets/Ancients/Cthulthu.webp');
 }
 
 .azatoth {
-    background-image: url('../assets/Ancients/Azathoth.png');
+    background-image: url('../assets/Ancients/Azathoth.webp');
 }
 
 .iogsototh {
-    background-image: url('../assets/Ancients/IogSothoth.png');
+    background-image: url('../assets/Ancients/IogSothoth.webp');
 }
 
 .shubniggurath {
-    background-image: url('../assets/Ancients/ShubNiggurath.png');
+    background-image: url('../assets/Ancients/ShubNiggurath.webp');
 }
 
 .difficulty-container .difficulty label {
@@ -202,7 +202,7 @@ body {
 }
 
 .deck {
-    background-image: url('../assets/mythicCardBackground.png');
+    background-image: url('../assets/mythicCardBackground.webp');
     transition: 0.5s ease-out;
 }
 
